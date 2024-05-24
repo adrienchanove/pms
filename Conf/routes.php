@@ -15,6 +15,11 @@ Route::add('/', 'index', 'index');
 Route::add('/login', 'user', 'login');
 Route::add('/logout', 'user', 'logout', $paramsAuthed);
 
+// Controller api
+Route::add('/api/login', 'api', 'auth_login');
+Route::add('/api/logout', 'api', 'auth_logout', $paramsAuthed);
+Route::add('/api/user', 'api', 'user_get', $paramsAuthed);
+
 
 // Controller admin
 Route::add('/admin', 'admin', 'index', $paramsAdmin);
