@@ -12,46 +12,9 @@ class UserController {
         */
         public function login()
         {
-            // Check auth
-            if (Auth::isLogged()) {
-                header("location: /");
-                exit;
-            }
-            // Check post
-            if (isset($_POST['username']) && isset($_POST['password'])) {
-                if (Auth::login($_POST['username'], $_POST['password'])) {
-                    header("location: /");
-                    exit;
-                } else {
-                    $error = "Identifiants incorrects";
-                }
-            }
-            // open view
-            view('user/login', ['error' => $error ?? '']);
+            view('user/login');
         }
 
-        /**
-         * Page register
-         */
-        public function register()
-        {
-            // Check auth
-            if (Auth::isLogged()) {
-                header("location: /");
-                exit;
-            }
-            // Check post
-            if (isset($_POST['username']) && isset($_POST['password'])) {
-                $user = new User();
-                $user->username = $_POST['username'];
-                $user->password = $_POST['password'];
-                $user->save();
-                header("location: /login");
-                exit;
-            }
-            // open view
-            view('user/register');
-        }
 
         /**
          * Page logout
