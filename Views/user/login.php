@@ -5,75 +5,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="/js/login.js"></script>
+    <!-- vue cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <title>Login</title>
+
 </head>
 
 <body>
-    <header>
-        <h1>Login</h1>
-    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Login</h1>
+                <form action="" id="login-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" x-model="username" name="username" required>
+                    </div>
 
-    <form method="post">
-        <label for="username">Nom d'utilisateur</label>
-        <input type="text" name="username" id="username">
-        <label for="password">Mot de passe</label>
-        <input type="password" name="password" id="password">
-        <a href="/register">S'enregistrer</a>
-        <input type="submit" value="Se connecter">
-    </form>
-    <?php if (isset($data['error'])) : ?>
-        <p class="error"><?php echo $data['error']; ?></p>
-    <?php endif; ?>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required </div>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f1f1f1;
-        }
+                        <button class="btn btn-primary" x-on:click="tryLogin">Login</button>
+                        <div class="alert alert-danger d-none" id="error-message" role="alert">
+                            <ul>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
 
-            /* flex */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            width: 300px;
-            margin: 0 auto;
-        }
-
-        form label {
-            margin-top: 10px;
-        }
-
-        form input {
-            margin-top: 5px;
-        }
-
-        form input[type="submit"] {
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-        }
-
-        .error {
-            color: red;
-            margin-top: 10px;
-        }
-    </style>
 </body>
+
+
+
+
 
 </html>
