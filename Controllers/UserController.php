@@ -12,6 +12,10 @@ class UserController {
         */
         public function login()
         {
+            if (Auth::isLogged()) {
+                header("location: /");
+                exit;
+            }
             view('user/login');
         }
 

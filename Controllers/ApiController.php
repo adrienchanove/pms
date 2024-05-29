@@ -15,6 +15,10 @@ class ApiController
      */
     public function Auth_login()
     {
+        if (Auth::isLogged()) {
+            echo json_encode(['error' => false, 'errorMessages' => ['User already logged']]);
+            return;
+        }
         // get POST data
         $error = [
             'errorMessages' => [],
@@ -45,24 +49,14 @@ class ApiController
             // check if no error
             if (!$error['error']) {
                 // check if user exists
-                $user = User::getByUsername($username);
+
 
                 // check if user exists
-                if ($user) {
-                    // check if password is correct
-                    if (password_verify($password, $user['password'])) {
-                        // set session
-                        $_SESSION['user_id'] = $user['id'];
-                        $_SESSION['username'] = $user['username'];
+                if (Auth::login($username, $password)) {
 
-                        // No error
-                        $error['error'] = false;
-                        $error['errorMessages'][] = 'Login success';
-                    } else {
-                        // Error message Invalid password
-                        $error['error'] = true;
-                        $error['errorMessages'][] = 'Login failed';
-                    }
+                    // No error
+                    $error['error'] = false;
+                    $error['errorMessages'][] = 'Login success';
                 } else {
                     // Error message User not found
                     $error['error'] = true;
@@ -73,6 +67,7 @@ class ApiController
             // Error message Invalid request
             $error['error'] = true;
             $error['errorMessages'][] = 'Invalid request';
+            $error['receivedPost'] = $_POST;
         }
         echo json_encode($error);
     }
@@ -121,5 +116,4 @@ class ApiController
     /**
      * Get all housings
      */
-
 }
