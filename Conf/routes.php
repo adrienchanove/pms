@@ -23,6 +23,8 @@ Route::add('/api/user', 'api', 'user_get', $paramsAuthed);
 
 // Controller admin
 Route::add('/admin', 'admin', 'index', $paramsAdmin);
+//    Reset database
+Route::add('/admin/reset', 'admin', 'reset');
 
 // Test route with parameters
 Route::add('test/[id]/[nom]', 'index', 'test');
