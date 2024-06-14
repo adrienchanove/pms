@@ -5,7 +5,7 @@ new Vue({
         reservationsEnd: [],
     },
     mounted() {
-        fetch('/api/reservations')
+        fetch('/api/reservations/now')
             .then(response => response.json())
             .then(data => {
                 let today = new Date() ;

@@ -24,7 +24,7 @@ Route::add('/api/login', 'api', 'Auth_login');
 Route::add('/api/logout', 'api', 'auth_logout', $paramsAuthed);
 Route::add('/api/user', 'api', 'user_get', $paramsAuthed);
 //    Reservations
-Route::add('/api/reservations', 'api', 'bookings_get_now', $paramsAuthed);
+Route::add('/api/reservations/now', 'api', 'bookings_get_now', $paramsAuthed);
 
 
 
