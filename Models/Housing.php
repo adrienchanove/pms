@@ -10,7 +10,6 @@ class Housing implements Model
     public $id;
     public $name;
     public $description;
-    public $typeId;
 
     /**
      * Housing constructor
@@ -31,7 +30,6 @@ class Housing implements Model
         $this->id = $array['id'] ?? null;
         $this->name = $array['name'];
         $this->description = $array['description'];
-        $this->typeId = $array['type_id'];
     }
 
     /**
@@ -41,10 +39,10 @@ class Housing implements Model
     {
         if ($this->id != null) {
             $bdd = new Bdd();
-            $sqlUpdateHousing = "UPDATE Housing SET name = '$this->name', description = '$this->description', type_id = '$this->typeId' WHERE id = $this->id";
+            $sqlUpdateHousing = "UPDATE Housing SET name = '$this->name', description = '$this->description' WHERE id = $this->id";
             $bdd->execute($sqlUpdateHousing);
         } else {
-            $sqlInsertHousing = "INSERT INTO Housing (name, description, type_id) VALUES ('$this->name', '$this->description', '$this->typeId')";
+            $sqlInsertHousing = "INSERT INTO Housing (name, description) VALUES ('$this->name', '$this->description')";
             $bdd = new Bdd();
             $bdd->execute($sqlInsertHousing);
             $this->id = self::lastInsertId();

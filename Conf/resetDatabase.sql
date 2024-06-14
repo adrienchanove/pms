@@ -4,31 +4,31 @@
 PRAGMA foreign_keys = ON;
 
 -- Drop tables
-DROP TABLE IF EXISTS user;
-DROP TABLE IF EXISTS housing;
-DROP TABLE IF EXISTS booking;
-DROP TABLE IF EXISTS season;
-DROP TABLE IF EXISTS pricing;
+DROP TABLE IF EXISTS log;
 DROP TABLE IF EXISTS bookingLine;
-DROP TABLE IF EXISTS logs;
+DROP TABLE IF EXISTS pricing;
+DROP TABLE IF EXISTS season;
+DROP TABLE IF EXISTS booking;
+DROP TABLE IF EXISTS housing;
+DROP TABLE IF EXISTS user;
 
 -- Create tables
 -- 		User
-CREATE TABLE IF NOT EXISTS user ( 
+CREATE TABLE IF NOT EXISTS user (
 	id            INTEGER         PRIMARY KEY AUTOINCREMENT,
 	username         VARCHAR(250),
 	password       VARCHAR(250),
 	is_admin       BOOLEAN
 );
 -- 		Housing
-CREATE TABLE IF NOT EXISTS housing ( 
+CREATE TABLE IF NOT EXISTS housing (
 	id            INTEGER         PRIMARY KEY AUTOINCREMENT,
 	name          VARCHAR(250),
 	description   TEXT,
 	nbPlaces      INTEGER
 );
 -- 		Booking
-CREATE TABLE IF NOT EXISTS booking ( 
+CREATE TABLE IF NOT EXISTS booking (
 	id            INTEGER         PRIMARY KEY AUTOINCREMENT,
 	name		  VARCHAR(250),
 	nbPlaces      INTEGER,
@@ -39,14 +39,14 @@ CREATE TABLE IF NOT EXISTS booking (
 	FOREIGN KEY (idHousing) REFERENCES housing(id)
 );
 -- 		Season
-CREATE TABLE IF NOT EXISTS season ( 
+CREATE TABLE IF NOT EXISTS season (
 	id            INTEGER         PRIMARY KEY AUTOINCREMENT,
 	name          VARCHAR(250),
 	startMonth    INTEGER,
 	endMonth      INTEGER
 );
 -- 		Pricing
-CREATE TABLE IF NOT EXISTS pricing ( 
+CREATE TABLE IF NOT EXISTS pricing (
 	id            INTEGER         PRIMARY KEY AUTOINCREMENT,
 	price         FLOAT,
 	idSeason      INTEGER,
@@ -63,10 +63,10 @@ CREATE TABLE IF NOT EXISTS bookingLine (
 	htPrice       FLOAT,
 	FOREIGN KEY (idBooking) REFERENCES booking(id)
 );
--- 		Logs
-CREATE TABLE IF NOT EXISTS logs ( 
+-- 		Log
+CREATE TABLE IF NOT EXISTS log (
 	id            INTEGER         PRIMARY KEY AUTOINCREMENT,
-	date          DATETIME,
+	date          DATETIME 	  DEFAULT CURRENT_TIMESTAMP,
 	message       TEXT
 );
 
