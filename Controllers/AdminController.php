@@ -16,7 +16,7 @@ class AdminController
      */
     public function index()
     {
-        $this->render('admin/index');
+        view('admin/admin');
     }
 
     /**

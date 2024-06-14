@@ -1,21 +1,39 @@
-<div id="headerBurgerMenu" class="hidden">
-    <?php if (Auth::isLogged()) : ?>
-        <a href="/logout">Logout|<?= Auth::getUsername() ?></a>
-    <?php else : ?>
-        <a href="/login">Login</a>
-    <?php endif; ?>
-    <a href="/">Home</a>
-    <a href="/logements">Logement</a>
-    <a href="/planning">Planning</a>
-    <a href="/gestion">Gestion</a>
-
-</div>
 <header>
-    <link rel="stylesheet" href="/css/header.css">
-    <div id="headerTop">
-        <div id="headerBurgerButton"> 🟰 </div>
-        <h1 id="headerTitle"><?= $data['title'] ?? 'Titre de la page non fournis' ?></h1>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">PMS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <?php
+                $navList = [
+                    'Home' => '/',
+                    'Réservations' => '/reservations',
+                    'Maisons' => '/houses',
+                    'Saisons' => '/seasons',
+                    'Tarifs' => '/prices',
+                    'Factures' => '/invoices',
 
-    <script src="/js/header.js"></script>
+
+                ];
+                ?>
+                <ul class="navbar-nav me-auto">
+                    <?php foreach ($navList as $key => $value) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link <?= strpos($_SERVER['REQUEST_URI'], $value) !== false ? 'active' : '' ?>" aria-current="page" href="<?= $value ?>"><?= $key ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <!-- <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </header>

@@ -108,7 +108,7 @@ class Route
         $routeUrl = explode('/', $routeUrl);
         foreach ($routeUrl as $key => $value) {
             if (preg_match('#\[([a-z]+)\]#', $value, $match)) {
-                $params[$match[1]] = $matches[$key];
+                $params[$match[1]] = $matches[$key-1];
             }
         }
         return $params;

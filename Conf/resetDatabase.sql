@@ -95,9 +95,9 @@ INSERT INTO pricing (price, idSeason, idHousing) VALUES (140, 1, 3);
 INSERT INTO pricing (price, idSeason, idHousing) VALUES (190, 2, 3);
 INSERT INTO pricing (price, idSeason, idHousing) VALUES (240, 3, 3);
 -- 		Booking
-INSERT INTO booking (name, nbPlaces, dateStart, dateEnd, idHousing, paid) VALUES ('reservation1', 4, '2020-01-01', '2020-01-08', 1, 100);
-INSERT INTO booking (name, nbPlaces, dateStart, dateEnd, idHousing, paid) VALUES ('reservation2', 6, '2020-02-01', '2020-02-08', 2, 150);
-INSERT INTO booking (name, nbPlaces, dateStart, dateEnd, idHousing, paid) VALUES ('reservation3', 8, '2020-03-01', '2020-03-08', 3, 200);
+INSERT INTO booking (name, nbPlaces, dateStart, dateEnd, idHousing, paid) VALUES ('Millet', 4, '2024-06-14', '2024-06-16', 1, 100);
+INSERT INTO booking (name, nbPlaces, dateStart, dateEnd, idHousing, paid) VALUES ('Pallot Jean', 6, '2020-02-01', '2020-02-08', 2, 150);
+INSERT INTO booking (name, nbPlaces, dateStart, dateEnd, idHousing, paid) VALUES ('Proust gege', 8, '2020-03-01', '2024-06-14', 3, 200);
 -- 		BookingLine
 INSERT INTO bookingLine (idBooking, libelle, quantity, htPrice) VALUES (1, 'location chalet', 1, 100);
 INSERT INTO bookingLine (idBooking, libelle, quantity, htPrice) VALUES (2, 'location chalet', 1, 150);

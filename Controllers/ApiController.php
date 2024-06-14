@@ -112,8 +112,25 @@ class ApiController
         }
     }
 
-    // Housing
+    // Bookings
     /**
-     * Get all housings
+     * Get all Bookings who are now
      */
+    public function bookings_get_now()
+    {
+        // get all bookings
+        $bookings = Booking::getAll();
+        $filteredBookings = [];
+        foreach ($bookings as $booking) {
+            if ($booking->startDate == date('Y-m-d') || $booking->endDate == date('Y-m-d')) {
+                $filteredBookings[] = $booking;
+            }
+        }
+        // get house for each booking
+        foreach ($filteredBookings as $booking) {
+            $house = Housing::getById($booking->idHousing);
+            $booking->house = $house;
+        }
+        echo json_encode($filteredBookings);
+    }
 }
