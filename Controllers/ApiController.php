@@ -133,4 +133,32 @@ class ApiController
         }
         echo json_encode($filteredBookings);
     }
+
+    /**
+     * Get booking by id
+     */
+    public function booking_get($params)
+    {
+        // get booking
+        $booking = Booking::getById($params['id']);
+        // get house
+        $house = Housing::getById($booking->idHousing);
+        $booking->house = $house;
+        echo json_encode($booking);
+    }
+
+    /**
+     * Get all bookings
+     */
+    public function bookings_get_all()
+    {
+        // get all bookings
+        $bookings = Booking::getAll();
+        // get house for each booking
+        foreach ($bookings as $booking) {
+            $house = Housing::getById($booking->idHousing);
+            $booking->house = $house;
+        }
+        echo json_encode($bookings);
+    }
 }

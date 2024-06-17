@@ -52,4 +52,22 @@ class FrontController
         view('test', ['params' => $params]);
     }
 
+    /**
+     * page de liste de reservation
+     */
+    public function reservations( $params ){
+        // include view
+        view('reservation/list', ['params' => $params]);
+    }
+
+    /**
+     * page de modification de reservation
+     */
+    public function reservation( $params ){
+        // include view
+        view('reservation/edit', ['params' => $params]);
+    }
+
+
+
 }
